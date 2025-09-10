@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio 3D – Łukasz Kmiecik</title>
+  <meta name="description" content="Interaktywne portfolio projektów 3D: mechaniczne, instalacje i inne." />
+
+  <!-- Tailwind via CDN for quick styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- model-viewer web component (glTF/GLB viewer with controls/AR) -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <!-- (Optional) Plausible Analytics – replace example domain with your own -->
+  <!-- Remove if you plan to use Umami/Matomo/GA4 instead -->
+  <script defer data-domain="example.com" src="https://plausible.io/js/script.js"></script>
+
+  <link rel="preconnect" href="https://plausible.io">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-40 bg-white/70 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl md:text-2xl font-semibold">Portfolio 3D – Łukasz Kmiecik</h1>
+      <nav class="flex gap-3 text-sm">
+        <a href="#" class="hover:underline" id="aboutLink">O projekcie</a>
+        <a href="#" class="hover:underline" id="statsLink">Statystyki</a>
+        <a href="#" class="hover:underline" id="contactLink">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-6">
+    <section class="mb-6">
+      <div class="grid gap-4 md:grid-cols-4">
+        <div class="md:col-span-3 flex flex-wrap gap-2 items-center">
+          <span class="text-sm font-medium">Kategorie:</span>
+          <button class="chip active" data-cat="all">Wszystkie</button>
+          <button class="chip" data-cat="mechaniczne">Mechaniczne</button>
+          <button class="chip" data-cat="instalacje">Instalacje</button>
+          <button class="chip" data-cat="produkt">Produkt</button>
+          <button class="chip" data-cat="inne">Inne</button>
+        </div>
+        <div class="md:col-span-1 flex gap-2">
+          <input id="search" type="search" placeholder="Szukaj..." class="input flex-1" />
+          <button id="clearSearch" class="btn">Wyczyść</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="cards"></section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center bg-black/60 p-4">
+    <div class="bg-white rounded-2xl w-full max-w-4xl shadow-xl overflow-hidden">
+      <div class="flex items-center justify-between p-4 border-b">
+        <h2 id="modalTitle" class="text-lg font-semibold">Podgląd modelu</h2>
+        <button id="closeModal" class="icon-btn" aria-label="Zamknij" title="Zamknij">✕</button>
+      </div>
+      <div class="p-4">
+        <model-viewer id="mv"
+          src=""
+          poster=""
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+          camera-controls
+          touch-action="pan-y"
+          auto-rotate
+          exposure="1.0"
+          environment-image="neutral"
+          style="width:100%; height: 60vh; background:#f8fafc;"
+        ></model-viewer>
+
+        <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="text-sm text-slate-600" id="modelMeta"></div>
+          <div class="flex gap-2">
+            <a id="dlModel" class="btn" href="#" download>⬇️ Pobierz GLB</a>
+            <a id="openPage" class="btn" href="#" target="_blank" rel="noopener">🔗 Strona projektu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="max-w-7xl mx-auto px-4 py-10 text-sm text-slate-600">
+    <p>© <span id="year"></span> Łukasz Kmiecik • Interaktywne portfolio 3D • Hostuj na Vercel/Netlify/GitHub Pages</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
