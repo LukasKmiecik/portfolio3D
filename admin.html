@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Admin – Statystyki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="real-bg text-slate-100">
+  <div data-include="partials/nav.html"></div>
+
+  <section class="container py-10">
+    <div class="glass p-6">
+      <h1 class="text-2xl font-semibold mb-4">Prywatne statystyki (lokalne + embed)</h1>
+
+      <h2 class="text-lg font-semibold mb-2">Lokalny dziennik (z tego urządzenia)</h2>
+      <pre id="log" class="bg-slate-900/60 rounded-xl p-4 text-slate-200 overflow-auto text-sm"></pre>
+      <div class="flex gap-2 mt-2">
+        <button id="clear" class="btn btn-ghost">Wyczyść lokalne logi</button>
+        <button id="export" class="btn">Eksport JSON</button>
+      </div>
+
+      <h2 class="text-lg font-semibold mt-8 mb-2">Zewnętrzna analityka (opcjonalny embed)</h2>
+      <p class="text-slate-400 mb-2">Ustaw URL embedu w <code>analytics.js</code> → <code>CFG.analytics.embedUrl</code>.</p>
+      <iframe id="embed" src="" style="width:100%;height:65vh;border:0;display:none;border-radius:12px;"></iframe>
+    </div>
+  </section>
+
+  <div data-include="partials/footer.html"></div>
+  <script src="include.js"></script>
+  <script>
+    const LOG_KEY='pf_local_log';
+    const data=JSON.parse(localStorage.getItem(LOG_KEY)||'[]');
+    document.getElementById('log').textContent=JSON.stringify(data,null,2);
+    document.getElementById('clear').onclick=()=>{ localStorage.removeItem(LOG_KEY); location.reload(); };
+    document.getElementById('export').onclick=()=>{
+      const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='stats-export.json'; a.click();
+    };
+
+    fetch('analytics.js').then(()=>{ /* just to ensure CFG is loaded by index */ });
+    // spróbuj pobrać embedUrl z window.CFG jeśli obecny
+    window.addEventListener('load', ()=>{
+      if (window.CFG && window.CFG.analytics && window.CFG.analytics.embedUrl){
+        const f=document.getElementById('embed');
+        f.src=window.CFG.analytics.embedUrl; f.style.display='block';
+      }
+    });
+  </script>
+  <script src="i18n.js"></script>
+</body>
+</html>

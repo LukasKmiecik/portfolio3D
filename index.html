@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title data-i18n="site.title">Interaktywne Portfolio 3D</title>
+  <meta name="description" content="Mechanika • Architektura • Instalacje • Produkt" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Plausible (opcjonalnie – podmień domenę albo usuń) -->
+  <script defer data-domain="twoj-url.github.io" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="real-bg text-slate-100">
+  <div data-include="partials/nav.html"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 data-i18n="hero.title">Interaktywne Portfolio 3D</h1>
+        <p class="muted" data-i18n="hero.subtitle">Mechanika • Architektura • Instalacje • Produkt</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="./?cat=mechanika" data-i18n="hero.ctaPrimary">Zobacz mechanikę</a>
+          <a class="btn btn-ghost" href="#grid" data-i18n="hero.ctaSecondary">Wszystkie projekty</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTRY -->
+  <section class="container py-6">
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="text-slate-300 text-sm mr-1" data-i18n="filters.categories">Kategorie:</span>
+      <button class="chip active" data-cat="all" data-i18n="filters.all">Wszystkie</button>
+      <button class="chip" data-cat="instalacje" data-i18n="filters.installations">Instalacje</button>
+      <button class="chip" data-cat="architektura" data-i18n="filters.architecture">Architektura</button>
+      <button class="chip" data-cat="mechanika" data-i18n="filters.mechanics">Mechanika</button>
+      <button class="chip" data-cat="produkt" data-i18n="filters.product">Produkt</button>
+      <button class="chip" data-cat="inne" data-i18n="filters.other">Inne</button>
+      <div class="ml-auto flex gap-2 items-center">
+        <input id="search" type="search" class="input" placeholder="Szukaj…" data-i18n-placeholder="filters.searchPh"/>
+        <button id="clearSearch" class="btn btn-ghost" data-i18n="filters.clear">Wyczyść</button>
+        <!-- Języki -->
+        <select id="lang" class="input">
+          <option value="pl">PL</option>
+          <option value="en">EN</option>
+          <option value="no">NO</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section id="grid" class="container pb-14">
+    <div id="cards" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+  </section>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-body">
+      <div class="modal-head">
+        <h2 id="modalTitle">Podgląd modelu</h2>
+        <button id="closeModal" title="Zamknij">✕</button>
+      </div>
+      <div class="modal-content">
+        <model-viewer id="mv" src="" poster="" camera-controls touch-action="pan-y"
+          auto-rotate shadow-intensity="1" ar ar-modes="webxr scene-viewer quick-look"
+          style="width:100%;height:60vh;background:#020617;border-radius:16px;"></model-viewer>
+        <div class="meta-row">
+          <div id="modelMeta" class="meta"></div>
+          <div class="actions">
+            <a id="dlModel" class="btn" href="#" download data-i18n="modal.download">Pobierz</a>
+            <a id="openPage" class="btn btn-primary" href="#" target="_blank" rel="noopener" data-i18n="modal.details">Szczegóły</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-include="partials/footer.html"></div>
+
+  <script src="include.js"></script>
+  <script src="i18n.js"></script>
+  <script src="analytics.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

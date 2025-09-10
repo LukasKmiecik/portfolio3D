@@ -1,0 +1,41 @@
+[
+  {
+    "id": "inst-plant",
+    "title": "Instalacje przemysłowe",
+    "category": "instalacje",
+    "description": "Elementy instalacji HVAC/VVS przygotowane do BIM.",
+    "model": "https://modelviewer.dev/shared-assets/models/RobotExpressive.glb",
+    "poster": "assets/thumb-inst.webp",
+    "page": "#",
+    "software": "SolidWorks / ArchiCAD",
+    "year": 2025,
+    "client": "Demo",
+    "tags": ["HVAC","VVS","BIM"]
+  },
+  {
+    "id": "mech-linear",
+    "title": "Mechanika: siłownik liniowy",
+    "category": "mechanika",
+    "description": "Prototyp siłownika ze śrubą kulową.",
+    "model": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+    "poster": "assets/thumb-mech.webp",
+    "page": "#",
+    "software": "SolidWorks",
+    "year": 2024,
+    "client": "Demo",
+    "tags": ["mechanika","aktuator"]
+  },
+  {
+    "id": "arch-pavilion",
+    "title": "Architektura: pawilon",
+    "category": "architektura",
+    "description": "Lekka konstrukcja z kratownicą i panelami.",
+    "model": "https://modelviewer.dev/shared-assets/models/Horse.glb",
+    "poster": "assets/thumb-arch.webp",
+    "page": "#",
+    "software": "Rhino",
+    "year": 2023,
+    "client": "Demo",
+    "tags": ["architektura"]
+  }
+]
