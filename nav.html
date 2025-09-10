@@ -1,0 +1,34 @@
+<!-- partials/nav.html -->
+<header class="sticky top-0 z-40 bg-white/70 backdrop-blur border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="./" class="text-xl md:text-2xl font-semibold">Portfolio 3D – Łukasz Kmiecik</a>
+
+    <nav class="flex items-center gap-4 text-sm">
+      <!-- Rozwijane: Projekty -->
+      <div class="relative group">
+        <button class="hover:underline inline-flex items-center gap-1">
+          Projekty
+          <span>▾</span>
+        </button>
+        <div
+          class="absolute right-0 mt-2 hidden group-hover:block bg-white border border-slate-200 rounded-xl shadow-lg min-w-56 p-2"
+        >
+          <!-- Linki filtrujące przez ?cat=... (działa na wszystkich stronach) -->
+          <a class="menu-item" href="./?cat=instalacje"   data-cat="instalacje">Instalacje</a>
+          <a class="menu-item" href="./?cat=architektura" data-cat="architektura">Architektura</a>
+          <a class="menu-item" href="./?cat=mechanika"    data-cat="mechanika">Mechanika</a>
+          <a class="menu-item" href="./?cat=produkt"      data-cat="produkt">Produkt</a>
+          <a class="menu-item" href="./?cat=inne"         data-cat="inne">Inne</a>
+          <a class="menu-item" href="./">Wszystkie</a>
+        </div>
+      </div>
+
+      <!-- Stałe pozycje -->
+      <a class="hover:underline" href="./about.html">O projekcie</a>
+      <a class="hover:underline" href="./stats.html">Statystyki</a>
+
+      <!-- Kontakt: podmień e-mail lub link do podstrony -->
+      <a class="btn" href="mailto:kontakt@twojadomena.pl">Kontakt</a>
+    </nav>
+  </div>
+</header>
