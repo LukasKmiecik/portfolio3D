@@ -27,7 +27,7 @@
 .dropdown-content a.active{ background:#2563eb; color:#fff; }
 
 /* HERO */
-.hero{ position:relative; min-height:58vh; background:url('assets/hero.jpg') center/cover no-repeat;
+.hero{ position:relative; min-height:58vh; background:url('assets/hero.png') center/cover no-repeat;
   border-bottom:1px solid rgba(148,163,184,.12); }
 .hero .overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(2,6,23,.55),rgba(2,6,23,.85)); }
 .hero .container{ position:relative; height:100%; display:flex; align-items:center; }
@@ -74,3 +74,4 @@
 .footer{ border-top:1px solid rgba(148,163,184,.15); padding:2rem 0; color:#94a3b8; }
 
 .hidden{ display:none!important; }
+
